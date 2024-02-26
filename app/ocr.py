@@ -40,7 +40,7 @@ class OcrTranslate:
             r = post('https://api.ocr.space/parse/image',
                      files={filename: f},
                      data=payload,)
-            return r.content.decode()
+            return r.json()["ParsedResults"][0]["ParsedText"]
 
     def url_ocr(self, url, language='eng'):
         '''
@@ -80,11 +80,14 @@ if __name__ == "__main__":
     # Determine the image source based on provided arguments
     if args.url:
         text = ocr_service.url_ocr(url=args.url, language=args.language)
+        print(text)
     elif args.file:
         text = ocr_service.image_ocr(filename=args.file, language=args.language)
+        print(text)
     else:
         parser.error("Must provide either --url or --file argument")
 
+    '''
     # Parse the JSON response
     try:
         text_data = json.loads(text)
@@ -93,7 +96,9 @@ if __name__ == "__main__":
 
     # Access the actual text (assuming "ParsedResults" is the correct key)
     if "ParsedResults" in text_data and len(text_data["ParsedResults"]) > 0:
-        extracted_text = text_data["ParsedResults"][0]["TextOverlay"]["Lines"]
-        print("\n".join(extracted_text))  # Print lines of the extracted text
+        extracted_text = text_data["ParsedResults"][0]["ParsedText"]
+        print(extracted_text)
+        # print("\n".join(extracted_text))  # Print lines of the extracted text
     else:
         print("No text found in the image")
+    '''
