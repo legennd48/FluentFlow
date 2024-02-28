@@ -1,9 +1,13 @@
 body {
-    background-color: rgb(175, 191, 238);
+    background-color:white;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 100%;
-    width: 100vw;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
 }
 
 #logo {
@@ -11,9 +15,10 @@ body {
     height: auto;
   }
 
-  header{
+  header {
     display: flex;
     align-items:center;
+    justify-content: space-between;
     box-shadow: 0 2px 2px 10px rgba(5, 155, 209, 0.9);
     padding: 5px;
     position: relative;
@@ -21,8 +26,6 @@ body {
     text-decoration: none;
  }
 
-
-S-
 .upload-button {
     padding: 10px 20px;
     background-color: #007bff;
@@ -31,17 +34,45 @@ S-
     border-radius: 5px;
     cursor: pointer;
     margin: 150px;
+    transition: background-color 0.3s;
+}
+
+.upload-button:hover {
+  background-color: #0051a3;
 }
 
 .upload-section {
-    margin-top: 200px;
-    margin-left: 400px;
+    margin-top: -120px;
+    margin-left: 200px;
     margin-right: 400px;
-    margin-bottom: 400px;
-    
+    margin-bottom: 400px; 
+    display: flex;
+    justify-content: center; 
 }
 
-#headings button{
+
+.result-area {
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 50px;
+  padding: 20px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 2px 5px rgba(120, 157, 237, 0.9);
+  background-color: white;
+  overflow-y: auto; 
+  max-height: 200px;
+}
+
+#result-text {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  resize: none;
+}
+
+#headings button {
     color: white;
     background-color: rgb(0, 55, 255);
     cursor: pointer;
@@ -51,6 +82,41 @@ S-
     padding: 10px;
 }
   
-  /*#image-upload {
+  #image-upload {
     display: none;
-  }*/
+  }
+
+  @media (max-width: 767px) {
+    .upload-section {
+        margin-left: 20px;
+        margin-right: 20px;
+        width: 90%;
+    }
+
+    .result-area {
+        width: 90%;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .upload-section {
+        margin-left: 50px;
+        margin-right: 50px;
+        width: 70%;
+    }
+
+    .result-area {
+        width: 70%;
+    }
+}
+
+@media (min-width: 1024px) {
+    .upload-section {
+        margin-left: 100px;
+        margin-right: 100px;
+    }
+
+    .result-area {
+        width: 50%;
+    }
+}
