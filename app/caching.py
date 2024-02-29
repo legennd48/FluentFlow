@@ -6,12 +6,14 @@ from sqlalchemy.orm import sessionmaker
 
 # Configure SQLAlchemy connection
 user = 'flow'
-pw = getenv('fluent_flow_db_pass')
-engine = create_engine('mysql+pymysql://{}:{}@localhost/FluentFlow_db'.format(user, pw), echo=True)
+pw = getenv('FLUENT_FLOW_DB_PASS')
+engine = create_engine('mysql+pymysql://{}:{}@localhost/FluentFlow_db'.format(
+    user, pw), echo=False)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 # Define database model
 Base = declarative_base()
+
 
 class Translation(Base):
     __tablename__ = 'translations'
@@ -23,9 +25,10 @@ class Translation(Base):
     translated_text = Column(String(1000))
     timestamp = Column(DateTime, default=datetime.now)
 
+
 class TranslationCache:
     """
-    This class handles caching of translated texts in a database using SQLAlchemy.
+    This class handles caching of translated texts in a db using SQLAlchemy.
     """
 
     def __init__(self):
@@ -45,12 +48,18 @@ class TranslationCache:
         Returns:
             A Translation object if found, or None if not found.
         """
-        return self.session.query(Translation).filter_by(
+        found = self.session.query(Translation).filter_by(
             source_text=source_text,
             target_language=target_language
         ).first()
 
-    def save_translation(self, source_language, source_text, target_language, translated_text):
+        if found:
+            return found.translated_text
+        else:
+            return None
+
+    def save_translation(self, source_language, source_text,
+                         target_language, translated_text):
         """
         Saves the translated text and details to the database.
 
@@ -69,9 +78,10 @@ class TranslationCache:
         self.session.add(new_translation)
         self.session.commit()
 
-    def update_cache(self, source_language, source_text, target_language, translated_text):
+    def update_cache(self, source_language, source_text,
+                     target_language, translated_text):
         """
-        Checks the cache, saves the translation if not found, and returns the text.
+        Checks the cache, saves the translation if not found, and returns it.
 
         Args:
             source_language: The source language of the text.
@@ -86,7 +96,8 @@ class TranslationCache:
         if cached_translation:
             return cached_translation.translated_text
         else:
-            self.save_translation(source_language, source_text, target_language, translated_text)
+            self.save_translation(source_language, source_text,
+                                  target_language, translated_text)
             return translated_text
 
     def close(self):

@@ -11,6 +11,8 @@ Example:
 
 import argparse
 from google.cloud import translate
+import json
+
 
 class TextTranslator:
     """
@@ -61,14 +63,22 @@ class TextTranslator:
             print(f"Error during translation: {e}")
             return None
 
-    def get_supported_languages(self):
-        ''' gets a list of supported languag codes.'''
-        response = client.get_supported_languages(parent=self.parent)
-        print("Supported Languages:")
-        for language in response.languages:
-            print("Language Code: {}".format(language.language_code))
+    def get_supported_languages(self, output_file="languages"):
+        ''' gets a list of supported language codes and writes them to a file.'''
+        try:
+            response = self.client.get_supported_languages(parent=self.parent)
+            supported_languages = []
+            for language in response.languages:
+                supported_languages.append(language.language_code)
 
-        return response
+            with open(output_file, "w") as f:
+                json.dump(supported_languages, f)
+
+            print("Supported Languages written to file: {}".format(output_file))
+            return supported_languages
+        except Exception as e:
+            print(f"Error retrieving supported languages: {e}")
+            return None
 
     def detect_language(self, text):
         ''' detects the language of a text string '''
