@@ -1,0 +1,232 @@
+body {
+    background-color:rgb(186, 186, 238);
+    /*background-image: url('../firstpage/images/firstpage1\ image.jpg');*/
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+header{
+  display: flex;
+  align-items:center;
+  justify-content: center;
+  box-shadow: 0 2px 2px 5px rgba(120, 157, 237, 0.9);
+  padding: 10px;
+  position: relative;
+  z-index: 1;
+  text-decoration: none;
+  background-color: white;
+}
+
+#logo{
+  width: 100px;
+  height: auto;
+}
+
+#headings {
+  margin-top: 20px;
+}
+
+#headings a {
+  text-decoration: none;
+}
+
+#headings button {
+  display: flex;
+  flex-direction: column;
+  margin: 10px; 
+  padding: 10px 20px; 
+  color: white;
+  background-color: rgb(114, 145, 207);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#headings button:hover {
+  background-color: #db6dea;
+}
+
+  /* THE BUTTON STYLES */
+ #universe {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    margin: 0 auto; 
+    margin-top: -50px;
+    padding: 20px;
+    border: 2px solid whitesmoke;
+    box-shadow: 0 2px 2px 5px rgba(120, 157, 237, 0.9); 
+    background-color: white; 
+  }
+
+ #universe2 {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  #universe2 .buttns button,
+  #universe2 .bttns button {
+    margin-top: 0px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+  }
+  
+ buttns button,
+.bttns button {
+  padding: 5px;
+  background-color: rgb(114, 164, 218);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.buttns button:hover,
+.bttns button:hover {
+  background-color: #8177ed;
+}
+
+  /* INPUT BOX STYLES */
+  .box1,
+  .box2 {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .input1,
+.input2 {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid black;
+  background-color: white;
+  border-radius: 5px;
+  box-sizing: border-box;
+  resize: vertical;
+  overflow-y: auto;
+  max-height: 500px;
+}
+
+
+  input[type="text"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid black;
+  background-color: white;
+  border-radius: 5px;
+  box-sizing: border-box; 
+  resize: vertical;
+}
+
+/*DROPDOWN STYLES */
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 2;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+/* Dropdown button */
+.buttns .dropdown-btn {
+  padding: 5px;
+  background-color: rgb(114, 164, 218);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Show the dropdown menu on hover */
+.buttns:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content {
+  bottom: 0;
+  margin-top: 5px;
+}
+/* Sample list item for demonstration */
+.dropdown-content li {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+/* Style the list items */
+.dropdown-content li:hover {
+  background-color: #ddd;
+}
+
+
+/* MEDIA QUERIES */
+@media (max-width: 767px) {
+  body {
+    font-size: 14px;
+  }
+
+  #universe {
+    width: 90%;
+    margin-top: -30px;
+  }
+
+  .input1,
+  .input2 {
+    padding: 5px;
+  }
+  
+  #headings {
+     display: flex;
+  }
+
+  #headings button {
+      margin: 5px;
+  }
+}
+
+.dropdown-content {
+   max-height: 500px;
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  body {
+    font-size: 16px; 
+  }
+
+  #universe {
+    width: 70%;
+    margin-top: -40px;
+  }
+
+  .input1,
+  .input2 {
+    padding: 8px;
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    font-size: 18px;
+  }
+
+  #universe {
+    width: 50%;
+    margin-top: -50px;
+  }
+
+  .input1,
+  .input2 {
+    padding: 10px; 
+  }
+}
