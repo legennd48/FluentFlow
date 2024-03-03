@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 
-from ocr import OcrTranslate
-from translate import TextTranslator
-from caching import TranslationCache
+from app.ocr import OcrTranslate
+from app.translate import TextTranslator
+from app.caching import TranslationCache
 
 
 class FluentFlow:
@@ -31,7 +31,7 @@ class FluentFlow:
         Returns:
         The translated text.
         """
-
+        cached_translation = None
         if is_image:
           # OCR and translation flow
           extracted_text = self.ocr_service.image_ocr(filename=text_or_image)
@@ -61,8 +61,7 @@ if __name__ == "__main__":
 
     fluent_flow = FluentFlow()
 
-    '''
-    image_path = "/vagrant/F0ytmAuX0AIc0Lp.jpeg"
+    image_path = "../temp_image_03c58789-06c3-4611-9636-dd29557066e8.jpg"
     target_language = "yo"
     translated_text = fluent_flow.translate(image_path,
                                     target_language, is_image=True)
@@ -73,3 +72,4 @@ if __name__ == "__main__":
     target_language = "en"
     translated_text = fluent_flow.translate(text_to_translate, target_language, is_image=False)
     print("Translated text: {}".format(translated_text))
+'''
