@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FLEUNT FLOW</title>
+  <link rel="stylesheet" type="text/css" href="../static/css/App1.css">
+</head>
+<body>
+  <header><img src="../static/images/cover.png" alt="Logo" id="logo"></header>
+  <div id="headings">
+    <a><button>Translate Text</button></a>
+    <a href="/ocr"><button>Translate Image</button></a>
+    <a href="/about"><button>About</button></a>
+  </div>
+  <div id="universe">
+    <div class="box1">
+      <form action="/translate" method="POST">
+        <textarea class="input1" name="input1" placeholder="Enter text to translate"></textarea>
+        <div id="universe2">
+          <div class="buttns">
+            <select class="dropdown-btn" name="Target_Language">
+              {% for language, code in supported_languages %}
+                <option value="{{ code }}">{{ language }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="bttns">
+            <button type="submit">Translate</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="box2">
+      <p id="translation-status" style="display: none;">Translating...</p>
+    <textarea class="input2" name="input1" placeholder="Translation Results">{{ translated_text }}</textarea>
+  </div>
+</div>
+  <script src="../static/Js/App1.js"></script>
+</body>
+</html>

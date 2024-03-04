@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FLUENT FLOW</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/App2.css">
+</head>
+<body>
+     <header><img src="../static/images/cover.png" alt="Logo" id="logo">
+     <div id="headings">
+            <a href="/translate"><button>Translate Text</button></a>
+            <a href="/about"><button>About</button></a>
+        </div>
+    </header>
+       <div id="Universal">
+    <div id="universe">
+      <div class="upload-section">
+	<form action="/ocr" method="POST" enctype="multipart/form-data">
+            <label for="image-upload" class="upload-button">Click to upload image</label>
+            <input type="file" name="image" id="image-upload" accept="image/*">
+         </div>
+         <div id="image-box"></div>
+         <div id="bttn">
+	   <select class="butt" name="Target_Language">
+              {% for language, code in supported_languages %}
+                <option value="{{ code }}">{{ language }}</option>
+              {% endfor %}
+            </select>
+           <button class="buttn" type="submit">Translate</button>
+	   </form>
+         </div>
+            </div>
+            <div class="result-area">
+                <textarea id="result-text" placeholder="Result will be shown here">{{ translated_text }}</textarea>
+            </div>
+        </div>
+    <script src="../static/Js/App2.js"></script>
+</body>
+</html>
