@@ -111,14 +111,20 @@ header{
   box-sizing: border-box;
   resize: vertical;
   overflow-y: auto;
-  max-height: 500px;
+  max-height: 100%;
 }
 
+#universe .input1 {
+ padding: 50px;
+}
+ #universe .input2 {
+    padding: 50px;
+ }
 
   input[type="text"],
 textarea {
   width: 100%;
-  padding: 10px;
+  padding: 50px;
   border: 1px solid black;
   background-color: white;
   border-radius: 5px;
@@ -145,6 +151,7 @@ textarea {
   background-color: rgb(114, 164, 218);
   color: white;
   border: none;
+  border-style: none;
   border-radius: 5px;
   cursor: pointer;
 }
@@ -169,41 +176,44 @@ textarea {
   background-color: #ddd;
 }
 
-
+.dropdown-content {
+    max-height: 500px;
+ }
+ 
+ /* Translate status */
+ #translation-status {
+     width: auto;
+     /*width: 50%;*/
+     border: 10px black solid;
+     border-style: none;
+     background-color:black;
+     color: whitesmoke;
+ }
+ 
 /* MEDIA QUERIES */
 @media (max-width: 767px) {
   body {
     font-size: 14px;
+  }  
+
+  #headings {
+    display: flex;
+   /* flex-direction: column;*/
+    margin-bottom: 50px;
   }
 
-  #universe {
-    width: 90%;
-    margin-top: -30px;
-  }
-
-  .input1,
+  #universe .input1,
   .input2 {
-    padding: 5px;
+   padding: 30px;
   }
   
-  #headings {
-     display: flex;
-  }
-
-  #headings button {
-      margin: 5px;
-  }
-}
-
-.dropdown-content {
-   max-height: 500px;
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
   body {
     font-size: 16px; 
   }
-
+  
   #universe {
     width: 70%;
     margin-top: -40px;
