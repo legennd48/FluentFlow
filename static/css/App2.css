@@ -46,10 +46,10 @@ body {
     text-align: center;
     margin-top: 50px;
     margin-bottom: 20px;
-    margin-left: 230px;
-    margin-right: 10px;
-    width: 20%;
-    padding: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 25%;
+    padding: 15px;
     background-color: #007bff;
     color: white;
     border: none;
@@ -62,26 +62,46 @@ body {
     background-color: #0013a3;
   }
 
+  .butt {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .butt:hover {
+    background-color: #0013a3;
+}
+
+  
+
   /* CSS FOR BOX-IMAGE */
 #image-box {
-    width: 50%;
-    height: 200px;
-    margin-left: 80px;
-    padding-left: 100px;
-    padding-right: 100px;
+    /*width: 100%;*/
+    /*height: 100%;*/
+    margin-left: auto;
+    padding-left: auto;
+    padding-right: auto;
     border: 2px solid #ccc;
     border-radius: 5px;
     overflow: hidden;
+    box-shadow: 0 2px 2px 5px rgba(120, 157, 237, 0.9); ;
 }
 
 #image-box img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-}
+} 
+
+#image-upload {
+    display: none;
+  }
 
 .buttn {
-    margin-left: 250px;
     margin-top: 20px;
     padding: 10px;
     background-color: #007bff;
@@ -96,24 +116,19 @@ body {
     background-color: #0013a3;
 }
   
-#image-upload {
-    display: none;
-  }
-
 
   /* TEXT AREA STYLES PLACEHOLDER */
-.result-area {
-  width: 50%;
+ .result-area {
+  width: 100%;
+  height: 120px;
   margin-top: 20px;
-  margin-left: 100px;
   margin-bottom: 50px;
-  padding: 30px;
+  padding-left: auto;
+  padding-right: auto;
   border: 2px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 2px 2px 5px rgba(120, 157, 237, 0.9);
   background-color: white;
-  overflow-y: auto; 
-  max-height: 200px;
 }
 
 #result-text {
@@ -125,7 +140,7 @@ body {
 }
 
 
-
+    /* MEDIA SIZES */
  @media (max-width: 767px) {
     #headings button {
         margin: 10px;
@@ -140,33 +155,34 @@ body {
         text-align: center;
     }
       
-    .buttn {
-        margin-left: 130px;
-        margin-right: 50px;
-        width: 25%;
-        display: flex;
-        text-align: center
+    #bttn {
+        margin-top: auto;
+        margin-left: 50px;
     }
 
     #image-box {
-      width:70%;
-      margin: 20px;
-      padding-left: 5px;
-      padding-right: 50px;
-      display: flex;
-      text-align: center  
+      width:100%;  
     }
+
+    #image-box img {
+    width: 100%;
+    height: 50%;
+    object-fit: cover;
+} 
+
    
     .result-area {
-        padding: 40px;
-        margin-left: 50px;
-        margin-right: 80px;
-        width: 15%;
         display: flex;
+         justify-content: center;
+         height: 100px;
+         margin-top: 30px;
+         margin-bottom: 30px;
+         margin-left: auto;
+         margin-right: auto;
     }
     
     .result-area {
-        width: 50%;
+        width: 90%;
     }
 }
 
