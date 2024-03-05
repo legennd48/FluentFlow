@@ -82,7 +82,7 @@ class TextTranslator:
 
     def detect_language(self, text):
         ''' detects the language of a text string '''
-        response = client.detect_language(
+        response = self.client.detect_language(
             content=text,
             parent=self.parent,
             mime_type="text/plain",  # mime types: text/plain, text/html
