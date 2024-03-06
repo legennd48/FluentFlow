@@ -43,5 +43,5 @@ FluentFlow is built upon a foundation of well-established libraries and technolo
 
 ## AUTHORS
 
-Abdulrazzaq Adewale Liasu (backend)
-Oluwatosin Salami (frontend)
+* Abdulrazzaq Adewale Liasu (backend)
+* Oluwatosin Salami (frontend)
