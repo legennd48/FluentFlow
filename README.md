@@ -1,21 +1,35 @@
-Portfolio Project
-from google.cloud import translate
+# FluentFlow: Effortless Translation for Text and Images
 
-def translate_text(text="Hello, world!", project_id="prefab-imagery-414717"):
+FluentFlow is a powerful and versatile translation application that seamlessly integrates text translation with OCR capabilities, enabling you to translate both text and images into a wide range of languages. It's designed for smooth user experience, efficient translation, and convenient caching for faster translation retrieval.
 
-    client = translate.TranslationServiceClient()
-    location = "global"
-    parent = f"projects/{project_id}/locations/{location}"
+## Core Features
 
-    response = client.translate_text(
-        request={
-            "parent": parent,
-            "contents": [text],
-            "mime_type": "text/plain",
-            "source_language_code": "en-US",
-            "target_language_code": "es",
-        }
-    )
+Image Translation: Extract text from images and translate it into your chosen language using OCR technology.
+Text Translation: Convert text directly into another language through text input method.
+Extensive Language Support: Translate content between a comprehensive list of [languages](https://cloud.google.com/translate/docs/languages).
+Caching: Store translated content for faster retrieval.
+User-Friendly Interface: Provide an intuitive and user-friendly interface for easy navigation and interaction.
+API Integration: Leverage powerful translation capabilities from [Google Cloud Translate](https://cloud.google.com/translate) to deliver accurate translations.
+## Building Blocks
 
-    for translation in response.translations:
-        print("Translated text: {}".format(translation.translated_text))
+FluentFlow is built upon a foundation of well-established libraries and technologies:
+
+Programming Language: Python 3
+Front-End Technologies:
+HTML: Provides the fundamental structure and content of the web application.
+CSS: Responsible for styling the web page's visual elements, ensuring user-friendliness and aesthetics.
+JavaScript(JQuery): Adds interactivity and dynamic behavior to the web application, enabling user interaction and data manipulation.
+OCR Library: [OCR-Space](https://ocr.space/OCRAPI)
+Translation Library: [Google Cloud Translate API](https://cloud.google.com/translate)
+Database: MySQL
+ORM: SQLAlchemy (Object-Relational Mapper for database interaction)
+Web Framework: Flask
+
+
+## Usage (demo)
+video or gif to be embeded
+
+## AUTHORS
+
+Abdulrazzaq Adewale Liasu (backend)
+Oluwatosin Salami (frontend)

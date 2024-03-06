@@ -1,52 +1,59 @@
-console.log('working')
-// Get the input and output textarea elements
-const inputTextarea = document.querySelector('.input1');
-const outputTextarea = document.querySelector('.input2');
+console.log('working');
 
-// Get the language dropdown button and content
-const dropdownBtn = document.querySelector('.dropdown-btn');
-const dropdownContent = document.querySelector('.dropdown-content');
+// Get the file input element, image box element, and translate button
+const fileInput = document.getElementById('image-upload');
+const imageBox = document.getElementById('image-box');
+const translateButton = document.querySelector(".buttn[type='button']");
 
-// Add click event listener to the language dropdown button
-dropdownBtn.addEventListener('click', () => {
-  // Toggle the display of the language dropdown content
-  dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
-});
+// Display selected image
+fileInput.addEventListener('change', function (event) {
+  if (event.target.files && event.target.files[0]) {
+    const fileReader = new FileReader();
+    fileReader.onload = function (e) {
+      const image = document.createElement('img');
+      image.src = e.target.result;
 
-// Add click event listener to the document to hide dropdown when clicked outside
-document.addEventListener('click', (event) => {
-  if (!event.target.closest('.dropdown-btn') && !event.target.closest('.dropdown-content')) {
-    dropdownContent.style.display = 'none';
+      // Replace only the existing image
+      const existingImage = imageBox.querySelector('img');
+      if (existingImage) {
+        imageBox.replaceChild(image, existingImage);
+      } else {
+        imageBox.appendChild(image);
+      }
+    };
+    fileReader.readAsDataURL(event.target.files[0]);
   }
 });
 
-// Add click event listener to the translate button
-const translateButton = document.querySelector('.bttns button');
-translateButton.addEventListener('click', () => {
-  // Get the text from the input textarea
-  const textToTranslate = inputTextarea.value;
+// Translate image text
+translateButton.addEventListener('click', async function (event) {
+  event.preventDefault();
 
-  // Simulate translation (replace this with actual translation logic)
-  const translatedText = `${textToTranslate} translated`; // Placeholder translation
+  // Only proceed if an image is selected
+  if (fileInput.files && fileInput.files[0]) {
+    const formData = new FormData();
+    formData.append("image", fileInput.files[0]);
+    formData.append("Target_Language", document.querySelector(".buttn[name='Target_Language']").value);
 
-  // Display the translated text in the output textarea
-  outputTextarea.value = translatedText;
-});
+    try {
+      const response = await fetch("/ocr", {
+        method: "POST",
+        body: formData,
+      });
 
-// Add click event listener to the language dropdown items
-const languageItems = document.querySelectorAll('.dropdown-content li');
-languageItems.forEach((item) => {
-  item.addEventListener('click', () => {
-    const selectedLanguage = item.querySelector('a').innerText;
-    dropdownBtn.innerText = selectedLanguage;
-    dropdownContent.style.display = 'none';
-  });
-});
-
-// Add click event listener to the "Cancel" button
-const cancelButton = document.querySelector('.buttns button:nth-of-type(1)');
-cancelButton.addEventListener('click', () => {
-  // Clear the input and output textareas
-  inputTextarea.value = '';
-  outputTextarea.value = '';
+      if (response.ok) {
+        const data = await response.json();
+        document.getElementById("result-text").value = data.translatedText;
+      } else {
+        console.error("Error:", response.statusText);
+        // TODO: Handle errors appropriately (e.g., display error message)
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      // TODO: Handle network errors (e.g., display error message)
+    }
+  } else {
+    // Handle the case where no image is selected
+    alert("Please select an image to translate.");
+  }
 });

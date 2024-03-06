@@ -24,7 +24,7 @@ header{
 }
 
 #logo{
-  width: 100px;
+  width: 200px;
   height: auto;
 }
 
@@ -112,6 +112,7 @@ header{
   resize: vertical;
   overflow-y: auto;
   max-height: 100%;
+  font-size: 16px;
 }
 
 #universe .input1 {

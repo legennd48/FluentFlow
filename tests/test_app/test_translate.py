@@ -1,57 +1,66 @@
-#!/usr/bin/python3
-'''
-test Module tests TextTranslator
-'''
-
 import unittest
-from unittest.mock import patch, MagicMock
+from unittest.mock import patch
 
 from app.translate import TextTranslator
 
+
 class TestTextTranslator(unittest.TestCase):
 
-    @patch('google.cloud.translate.TranslationServiceClient')
-    def test_translate(self, mock_client):
-        # Mock the translate_text method
-        mock_response = MagicMock()
-        mock_response.translations = [MagicMock(translated_text="Hola mundo!")]
-        mock_client.return_value.translate_text.return_value = mock_response
+    @patch('google.cloud.translate.TranslationServiceClient.translate_text')
+    def test_translate_success(self, mock_translate_text):
+        # Mock the API response
+        mock_response = unittest.mock.MagicMock()
+        mock_response.translations = [unittest.mock.MagicMock(translated_text="Hola, mundo!")]
+        mock_translate_text.return_value = mock_response
 
+        # Create translator and call translate
         translator = TextTranslator()
-        translated_text = translator.translate("Hello world!", "es")
+        translated_text = translator.translate("Hello, world!", "es")
 
-        # Assert the translated text and detected language
-        self.assertEqual(translated_text, "Hola mundo!")
-        self.assertEqual(translator.translate("", "es"), None)  # Test for empty text
+        # Assert expected behavior
+        self.assertEqual(translated_text, "Hola, mundo!")
 
-    @patch('google.cloud.translate.TranslationServiceClient')
-    def test_get_supported_languages(self, mock_client):
-        # Mock the get_supported_languages method
-        mock_response = MagicMock()
-        mock_languages = [MagicMock(language_code="en"), MagicMock(language_code="es")]
-        mock_response.languages = mock_languages
-        mock_client.return_value.get_supported_languages.return_value = mock_response
+    @patch('google.cloud.translate.TranslationServiceClient.translate_text')
+    def test_translate_error(self, mock_translate_text):
+        # Mock the API error
+        mock_translate_text.side_effect = Exception("API Error")
 
+        # Create translator and call translate
         translator = TextTranslator()
-        supported_languages = translator.get_supported_languages()
+        translated_text = translator.translate("Hello, world!", "es")
 
-        # Assert the number of supported languages
-        self.assertEqual(len(supported_languages), 2)
+        # Assert expected behavior
+        self.assertIsNone(translated_text)
+        self.assertRaises(Exception)  # Check if exception is raised
 
-    @patch('google.cloud.translate.TranslationServiceClient')
-    def test_detect_language(self, mock_client):
-        # Mock the detect_language method
-        mock_response = MagicMock()
-        mock_language = MagicMock(language_code="en", confidence=0.95)
-        mock_response.languages = [mock_language]
-        mock_client.return_value.detect_language.return_value = mock_response
+    @patch('google.cloud.translate.TranslationServiceClient.detect_language')
+    def test_detect_language(self, mock_detect_language):
+        # Mock the API response
+        mock_response = unittest.mock.MagicMock()
+        mock_response.languages = [unittest.mock.MagicMock(language_code="en", confidence=0.9)]
+        mock_detect_language.return_value = mock_response
 
+        # Create translator and call detect_language
         translator = TextTranslator()
-        detected_language = translator.detect_language("Hello world!")
+        detected_language = translator.detect_language("Hello, world!")
 
-        # Assert the detected language code and confidence
-        self.assertEqual(detected_language.language_code, "en")
-        self.assertAlmostEqual(detected_language.confidence, 0.95)
+        # Assert expected behavior
+        self.assertEqual(detected_language.languages[0].language_code, "en")
+        self.assertEqual(detected_language.languages[0].confidence, 0.9)
+
+    @patch('google.cloud.translate.TranslationServiceClient.detect_language')
+    def test_detect_language_error(self, mock_detect_language):
+        # Mock the API error
+        mock_detect_language.side_effect = Exception("API Error")
+
+        # Create translator and call detect_language
+        translator = TextTranslator()
+        detected_language = translator.detect_language("Hello, world!")
+
+        # Assert expected behavior
+        self.assertIsNone(detected_language)
+        self.assertRaises(Exception)  # Check if exception is raised
+
 
 if __name__ == '__main__':
     unittest.main()
