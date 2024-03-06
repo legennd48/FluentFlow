@@ -11,7 +11,7 @@ body {
 }
 
 #logo {
-    width: 100px;
+    width: 200px;
     height: auto;
   }
 
@@ -55,7 +55,7 @@ body {
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    transition: background-color 0.3s; 
+    transition: background-color 0.3s;
 }
 
  #universe .upload-section:hover {
@@ -76,7 +76,7 @@ body {
     background-color: #0013a3;
 }
 
-  
+
 
   /* CSS FOR BOX-IMAGE */
 #image-box {
@@ -95,7 +95,7 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-} 
+}
 
 #image-upload {
     display: none;
@@ -115,7 +115,7 @@ body {
 .buttn:hover {
     background-color: #0013a3;
 }
-  
+
 
   /* TEXT AREA STYLES PLACEHOLDER */
  .result-area {
@@ -154,7 +154,7 @@ body {
         display: flex;
         text-align: center;
     }
-      
+
     #bttn {
         margin-top: auto;
         margin-left: 50px;
@@ -168,7 +168,7 @@ body {
     width: 100%;
     height: 50%;
     object-fit: cover;
-} 
+}
 
    
     .result-area {
