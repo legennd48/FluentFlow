@@ -27,7 +27,7 @@ Web Framework: Flask
 
 
 ## Usage (demo)
-video or gif to be embeded
+![FluentFlow_usage](demo/FluentFlow.gif)
 
 ## AUTHORS
 
