@@ -1,7 +1,6 @@
-// Get the file input element, image box element, translate button, and dropdown
 const fileInput = document.getElementById('image-upload');
 const imageBox = document.getElementById('image-box');
-const translateButton = document.querySelector(".buttn[type='button']");
+const translateButton = document.querySelector(".buttn[type='submit']");
 const languageSelect = document.querySelector('.butt[name="Target_Language"]');
 
 // Display selected image
@@ -24,9 +23,9 @@ fileInput.addEventListener('change', function (event) {
   }
 });
 
-// Translate image text
+// Translate image text using AJAX
 translateButton.addEventListener('click', async function (event) {
-  event.stopPropagation(); // Prevent dropdown collapse
+  event.preventDefault(); // Prevent form submission
 
   // Only proceed if an image is selected
   if (fileInput.files && fileInput.files[0]) {
@@ -43,9 +42,8 @@ translateButton.addEventListener('click', async function (event) {
       if (response.ok) {
         const data = await response.json();
         document.getElementById("result-text").value = data.translatedText;
-
-        // Store selected language in local storage
-        localStorage.setItem('selectedLanguage', languageSelect.value);
+        // Reset dropdown to initial state
+        languageSelect.selectedIndex = 0;
       } else {
         console.error("Error:", response.statusText);
         // TODO: Handle errors appropriately (e.g., display error message)
@@ -57,11 +55,5 @@ translateButton.addEventListener('click', async function (event) {
   } else {
     // Handle the case where no image is selected
     alert("Please select an image to translate.");
-  }
-
-  // Retrieve stored language and re-select after response (if successful)
-  const storedLanguage = localStorage.getItem('selectedLanguage');
-  if (storedLanguage) {
-    languageSelect.value = storedLanguage;
   }
 });
