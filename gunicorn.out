@@ -1,0 +1,5 @@
+nohup: ignoring input
+[2024-03-08 22:20:32 +0000] [78631] [INFO] Starting gunicorn 21.2.0
+[2024-03-08 22:20:32 +0000] [78631] [INFO] Listening at: http://0.0.0.0:5006 (78631)
+[2024-03-08 22:20:32 +0000] [78631] [INFO] Using worker: sync
+[2024-03-08 22:20:32 +0000] [78633] [INFO] Booting worker with pid: 78633
