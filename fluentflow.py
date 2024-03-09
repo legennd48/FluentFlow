@@ -186,7 +186,6 @@ def ocr_data():
     # Write decoded image data to a temporary file
     with open(image_filename, "wb") as f:
         f.write(image_data)
-        # f.write(base64.b64decode(image_data))
 
     try:
         translated_text = translator.translate(image_filename, target_language, is_image=True)
@@ -198,44 +197,13 @@ def ocr_data():
     if os.path.exists(image_filename):
         os.remove(image_filename)
 
-    return render_template("ocr.html", translated_text=translated_text)# jsonify({"translatedText": translated_text})
+    return jsonify({"translatedText": translated_text})
 
 @app.route("/about", strict_slashes=False)
 def about():
     return render_template("about.html")
 
-'''
-@app.route("/translate", methods=["POST"], strict_slashes=False)
-def translate_post():
-  translator = FluentFlow()
-  text_to_translate = request.form.get("input1")
-  target_language = request.form.get("Target_Language")
 
-  translated_text = translator.translate(text_to_translate, target_language, is_image=False)
-
-  return render_template("index.html", translated_text=translated_text, original_text=original_text)
-
-
-
-@app.route("/ocr", methods=["POST"], strict_slashes=False)
-def ocr_post():
-    uploaded_image = request.files.get("image")
-
-    if uploaded_image:
-        print("Received image: {}, size: {}".format(uploaded_image.filename,
-                                                    uploaded_image.content_length))
-        image_data = uploaded_image.read()
-        target_language = request.form.get("Target_Language")
-
-        translator = FluentFlow()
-        translated_text = translator.translate(image_data, target_language, is_image=True)
-
-        return jsonify({"translatedText": translated_text})
-    else:
-        return jsonify({"error": "No image uploaded"}), 400
-
-
-'''
 if __name__ == "__main__":
     """ Main Function """
     app.run(host='0.0.0.0', port=5006)
