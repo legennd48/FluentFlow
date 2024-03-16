@@ -11,6 +11,7 @@ import uuid
 
 
 app = Flask(__name__)
+# supported languages
 language_dict = {
         "Afrikaans": "af",
         "Akan": "ak",
@@ -151,6 +152,7 @@ language_dict = {
         "Zulu": "zu"
     }
 
+# routes for text translation
 @app.route("/translate", methods=["GET"], strict_slashes=False)
 def translate():
     supported_languages = language_dict.items()
@@ -167,6 +169,7 @@ def translate_post():
 
   return jsonify({"translatedText": translated_text})
 
+# routes for image translation
 @app.route("/ocr", methods=["GET"], strict_slashes=False)
 def ocr():
     supported_languages = language_dict.items()
@@ -199,6 +202,7 @@ def ocr_data():
 
     return jsonify({"translatedText": translated_text})
 
+# route for landing page
 @app.route("/about", strict_slashes=False)
 def about():
     return render_template("about.html")

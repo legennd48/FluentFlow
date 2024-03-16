@@ -27,7 +27,14 @@ FluentFlow is built upon a foundation of well-established libraries and technolo
 * **ORM**: SQLAlchemy (Object-Relational Mapper for database interaction)
 * **Web Framework**: Flask
 
-## Usage (demo)
+## Installation
+
+No installation is required.
+
+## Usage
+
+To use FluentFlow, Visit our [Application Page](http://adewale.tech/translate)
+
 * **Text Translation:**
   * Enter text to translate in the top box
   * Select target language from dropdown

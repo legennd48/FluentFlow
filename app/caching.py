@@ -9,6 +9,7 @@ user = 'flow'
 pw = getenv('FLUENT_FLOW_DB_PASS')
 engine = create_engine('mysql+pymysql://{}:{}@localhost/FluentFlow_db'.format(
     user, pw), echo=False)
+# session config
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 # Define database model
