@@ -39,14 +39,18 @@ class FluentFlow:
         else:
           # Text-only translation flow
           extracted_text = text_or_image
-          source_language = None  # Source language might not be known
+          source_language = None  # Set to none for auto-detect feature
 
+          # First check cache for translation
           cached_translation = self.cache.check_cache(
             source_text=extracted_text, target_language=target_language)
 
+        # call translate api if translation not in cache
         if not cached_translation:
             translated_text = self.translator.translate(
               text=extracted_text, target_language=target_language)
+
+            # save new translation in cache
             if translated_text:
               self.cache.save_translation(source_language=source_language,
                                           source_text=extracted_text,

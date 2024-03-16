@@ -87,12 +87,13 @@ class TextTranslator:
             parent=self.parent,
             mime_type="text/plain",  # mime types: text/plain, text/html
         )
+        '''
         for language in response.languages:
             # The language detected
             print(f"Language code: {language.language_code}")
             # Confidence of detection result for this language
             print(f"Confidence: {language.confidence}")
-
+        '''
         return response
 
 if __name__ == "__main__":

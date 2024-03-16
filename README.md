@@ -1,3 +1,13 @@
+## Table of Contents
+
+* [FluentFlow: Effortless Translation for Text and Images](#fluentflow-effortless-translation-for-text-and-images)
+* [Core Features](#core-features)
+* [Building Blocks](#building-blocks)
+* [Installation](#installation)
+* [Usage](#usage)
+* [Contributing](#contributing)
+* [AUTHORS](#authors)
+
 # FluentFlow: Effortless Translation for Text and Images
 
 FluentFlow is a powerful and versatile translation application that seamlessly integrates text translation with OCR capabilities, enabling you to translate both text and images into a wide range of languages. It's designed for smooth user experience, efficient translation, and convenient caching for faster translation retrieval.
@@ -27,7 +37,14 @@ FluentFlow is built upon a foundation of well-established libraries and technolo
 * **ORM**: SQLAlchemy (Object-Relational Mapper for database interaction)
 * **Web Framework**: Flask
 
-## Usage (demo)
+## Installation
+
+No installation is required.
+
+## Usage
+
+To use FluentFlow, Visit our [Application Page](http://adewale.tech/translate)
+
 * **Text Translation:**
   * Enter text to translate in the top box
   * Select target language from dropdown
@@ -40,6 +57,27 @@ FluentFlow is built upon a foundation of well-established libraries and technolo
   * Click translate button and wait a few seconds for translation result
 
 ![FluentFlow_usage](demo/FluentFlow.gif)
+
+## Contributing
+
+We appreciate contributions from the community! If you're interested in helping improve FluentFlow, here's how you can get involved:
+
+**Getting Started:**
+
+* Make sure you have Python 3 and Git installed on your system.
+* Fork the repository on GitHub.
+* Clone your forked repository to your local machine.
+
+**Contribution Guidelines:**
+
+* **Issue Tracking:** Report bugs or suggest features by creating an issue on the GitHub repository.
+* **Pull Requests:** All code changes should be submitted via pull requests. Please follow these steps:
+    1. Create a new branch for your changes.
+    2. Implement your changes and add relevant tests (if applicable).
+    3. Ensure your code adheres to any style guidelines.
+    4. Submit a pull request with a clear description of your changes.
+
+**Thank you for your interest in contributing!**
 
 ## AUTHORS
 

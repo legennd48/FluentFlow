@@ -12,7 +12,7 @@ from requests import get, post
 class OcrTranslate:
     '''
     Performs text recognition from images using
-    ocr.space ocr
+    ocr.space api
     '''
 
     def __init__(self):
@@ -37,10 +37,10 @@ class OcrTranslate:
             'detectOrientation': True,
             }
         with open(filename, 'rb') as f:
-            r = post('https://api.ocr.space/parse/image',
+            response = post('https://api.ocr.space/parse/image',
                      files={filename: f},
                      data=payload,)
-            return r.json()["ParsedResults"][0]["ParsedText"]
+            return response.json()["ParsedResults"][0]["ParsedText"]
 
     def url_ocr(self, url, language='eng'):
         '''
@@ -58,8 +58,8 @@ class OcrTranslate:
             'url': url
             }
         endpoint = 'https://api.ocr.space/parse/imageurl'
-        r = get(endpoint, params=params)
-        return r.json()
+        response = get(endpoint, params=params)
+        return response.json()
 
 
 if __name__ == "__main__":
