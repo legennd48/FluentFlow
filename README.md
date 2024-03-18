@@ -49,14 +49,14 @@ To use FluentFlow, Visit our [Application Page](http://adewale.tech/translate)
   * Enter text to translate in the top box
   * Select target language from dropdown
   * Click translate button and wait a few seconds for translation result
+  ![FluentFlow_usage_text_translate](demo/FluentFlow_text_translate.gif)
 
 * **Image Translation:**
   * Click 'Translate_Image'
   * Click 'Click to upload image' - preview of selected image will be shown
   * Select language from dropdown.
   * Click translate button and wait a few seconds for translation result
-
-![FluentFlow_usage](demo/FluentFlow.gif)
+  ![FluentFlow_usage_image_translate](demo/FluentFlow_image_translate.gif)
 
 ## Contributing
 
