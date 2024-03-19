@@ -3,7 +3,7 @@
 FluentFlow is a powerful and versatile translation application that seamlessly integrates text translation with OCR capabilities, enabling you to translate both text and images into a wide range of languages. It's designed for smooth user experience, efficient translation, and convenient caching for faster translation retrieval.
 **Deployment Status**: [https://adewale.tech/translate](https://adewale.tech/translate)
 
-<img src="/static/images/cover.png" align="center" alt="FluentFlow logo" width="120" height="178">
+<img src="/static/images/cover.png" align="center" alt="FluentFlow logo">
 
 ## Table of Contents
 
