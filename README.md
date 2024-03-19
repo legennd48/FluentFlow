@@ -15,7 +15,7 @@ FluentFlow is a powerful and versatile translation application that seamlessly i
 * [Contributing](#contributing)
 * [AUTHORS](#authors)
 * [Licensing](#licensing)
-* [Related Projects](#related projects)
+* [Related Projects](#related-projects)
 
 
 ## Core Features
