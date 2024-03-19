@@ -1,3 +1,10 @@
+# FluentFlow: Effortless Translation for Text and Images
+
+FluentFlow is a powerful and versatile translation application that seamlessly integrates text translation with OCR capabilities, enabling you to translate both text and images into a wide range of languages. It's designed for smooth user experience, efficient translation, and convenient caching for faster translation retrieval.
+**Deployment Status**: [https://adewale.tech/translate](https://adewale.tech/translate)
+
+<img src="/static/images/cover.png" align="center" alt="FluentFlow logo" width="120" height="178">
+
 ## Table of Contents
 
 * [FluentFlow: Effortless Translation for Text and Images](#fluentflow-effortless-translation-for-text-and-images)
@@ -7,10 +14,9 @@
 * [Usage](#usage)
 * [Contributing](#contributing)
 * [AUTHORS](#authors)
+* [Licensing](#licensing)
+* [Related Projects] (#related projects)
 
-# FluentFlow: Effortless Translation for Text and Images
-
-FluentFlow is a powerful and versatile translation application that seamlessly integrates text translation with OCR capabilities, enabling you to translate both text and images into a wide range of languages. It's designed for smooth user experience, efficient translation, and convenient caching for faster translation retrieval.
 
 ## Core Features
 
@@ -79,7 +85,18 @@ We appreciate contributions from the community! If you're interested in helping 
 
 **Thank you for your interest in contributing!**
 
+## Licensing
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE.md) file for details.
+
 ## AUTHORS
 
 * Abdulrazzaq Adewale Liasu (backend)
 * Oluwatosin Salami (frontend)
+
+## Related Projects
+This list is a work in progress. We welcome contributions from the community! If you've found other projects that complement FluentFlow, please submit a pull request to add them to this list.
+
+* **Google Translate API**: A powerful cloud-based translation service offering support for a wide range of languages. (Link to Google Cloud Translate API documentation)
+* **DeepL Translator**: A popular online translation tool known for its high accuracy and nuanced translations. (Link to DeepL website)
+* **Tesseract OCR**: An open-source optical character recognition (OCR) engine that can be used to extract text from images. (Link to Tesseract OCR website)
